@@ -750,7 +750,7 @@ pub fn parse_chunk_size(buf: &[u8])
             // LWS can follow the chunk size, but no more digits can come
             b'\t' | b' ' if in_chunk_size => in_chunk_size = false,
             // We allow any arbitrary octet once we are in the extension, since
-            // they all get ignored anyway. According to the HTTP spec, valid
+            // they all get ignored anyway. According to the RTSP spec, valid
             // extensions would have a more strict syntax:
             //     (token ["=" (token | quoted-string)])
             // but we gain nothing by rejecting an otherwise valid chunk size.
@@ -807,7 +807,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 0);
         }
     }
@@ -818,7 +818,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/thing?data=a");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 0);
         }
     }
@@ -829,7 +829,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/thing?data=a^");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 0);
         }
     }
@@ -840,7 +840,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 2);
             assert_eq!(req.headers[0].name, "Host");
             assert_eq!(req.headers[0].value, b"foo.com");
@@ -855,7 +855,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 2);
             assert_eq!(req.headers[0].name, "Host");
             assert_eq!(req.headers[0].value, b"foo.com");
@@ -871,7 +871,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 1);
             assert_eq!(req.headers[0].name, "User-Agent");
             assert_eq!(req.headers[0].value, b"some\tagent");
@@ -885,7 +885,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 1);
             assert_eq!(req.headers[0].name, "User-Agent");
             assert_eq!(req.headers[0].value, b"1234567890some\tagent");
@@ -899,7 +899,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 1);
             assert_eq!(req.headers[0].name, "User-Agent");
             assert_eq!(req.headers[0].value, &b"1234567890some\t1234567890agent1234567890"[..]);
@@ -920,7 +920,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers[0].name, "Host");
             assert_eq!(req.headers[0].value, b"foo.com");
             assert_eq!(req.headers[1].name, "User-Agent");
@@ -937,7 +937,7 @@ mod tests {
 
     req! {
         test_request_partial_version,
-        b"GET / HTTP/1.", Ok(Status::Partial),
+        b"GET / RTSP/1.", Ok(Status::Partial),
         |_req| {}
     }
 
@@ -953,7 +953,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 0);
         }
     }
@@ -964,7 +964,7 @@ mod tests {
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
-            assert_eq!(req.version.unwrap(), 1);
+            assert_eq!(req.version.unwrap(), 0);
             assert_eq!(req.headers.len(), 0);
         }
     }
@@ -1008,7 +1008,7 @@ mod tests {
         test_response_simple,
         b"RTSP/1.0 200 OK\r\n\r\n",
         |res| {
-            assert_eq!(res.version.unwrap(), 1);
+            assert_eq!(res.version.unwrap(), 0);
             assert_eq!(res.code.unwrap(), 200);
             assert_eq!(res.reason.unwrap(), "OK");
         }
@@ -1024,7 +1024,7 @@ mod tests {
         test_response_reason_missing,
         b"RTSP/1.0 200 \r\n\r\n",
         |res| {
-            assert_eq!(res.version.unwrap(), 1);
+            assert_eq!(res.version.unwrap(), 0);
             assert_eq!(res.code.unwrap(), 200);
             assert_eq!(res.reason.unwrap(), "");
         }
@@ -1034,7 +1034,7 @@ mod tests {
         test_response_reason_missing_no_space,
         b"RTSP/1.0 200\r\n\r\n",
         |res| {
-            assert_eq!(res.version.unwrap(), 1);
+            assert_eq!(res.version.unwrap(), 0);
             assert_eq!(res.code.unwrap(), 200);
             assert_eq!(res.reason.unwrap(), "");
         }
@@ -1044,7 +1044,7 @@ mod tests {
         test_response_reason_missing_no_space_with_headers,
         b"RTSP/1.0 200\r\nFoo: bar\r\n\r\n",
         |res| {
-            assert_eq!(res.version.unwrap(), 1);
+            assert_eq!(res.version.unwrap(), 0);
             assert_eq!(res.code.unwrap(), 200);
             assert_eq!(res.reason.unwrap(), "");
             assert_eq!(res.headers.len(), 1);
@@ -1057,7 +1057,7 @@ mod tests {
         test_response_reason_with_space_and_tab,
         b"RTSP/1.0 101 Switching Protocols\t\r\n\r\n",
         |res| {
-            assert_eq!(res.version.unwrap(), 1);
+            assert_eq!(res.version.unwrap(), 0);
             assert_eq!(res.code.unwrap(), 101);
             assert_eq!(res.reason.unwrap(), "Switching Protocols\t");
         }

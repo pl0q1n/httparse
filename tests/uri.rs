@@ -30,7 +30,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar;par?b");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo");
@@ -44,7 +44,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"test");
@@ -58,7 +58,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"test");
@@ -72,7 +72,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/foo.com");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -86,7 +86,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -100,7 +100,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/foo.com");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -122,7 +122,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%20b%20?%20d%20");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -144,7 +144,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -158,7 +158,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -172,7 +172,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -186,7 +186,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -200,7 +200,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"f");
@@ -214,7 +214,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -228,7 +228,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -242,7 +242,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -256,7 +256,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -270,7 +270,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -284,7 +284,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -298,7 +298,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -312,7 +312,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -326,7 +326,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -340,7 +340,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -354,7 +354,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -368,7 +368,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -382,7 +382,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -396,7 +396,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -410,7 +410,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:23");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -424,7 +424,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/:23");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -438,7 +438,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/::");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -452,7 +452,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/::23");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -466,7 +466,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"c");
@@ -480,7 +480,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:@c:29");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -494,7 +494,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//@");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.com");
@@ -508,7 +508,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/b:c/d@foo.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"a");
@@ -522,7 +522,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -536,7 +536,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "///////");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -550,7 +550,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "///////bar.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -564,7 +564,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//://///");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -578,7 +578,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -592,7 +592,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo");
@@ -606,7 +606,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path;a??e");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo");
@@ -620,7 +620,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/abcd?efgh?ijkl");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo");
@@ -634,7 +634,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/abcd");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo");
@@ -648,7 +648,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/[61:24:74]:98");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -662,7 +662,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/[61:27]/:foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -676,7 +676,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -690,7 +690,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -704,7 +704,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -718,7 +718,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -732,7 +732,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -746,7 +746,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -760,7 +760,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -774,7 +774,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -788,7 +788,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -802,7 +802,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -816,7 +816,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -830,7 +830,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -844,7 +844,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -858,7 +858,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/b/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -872,7 +872,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/%20/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -886,7 +886,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a%2fc");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -900,7 +900,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/%2f/c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -914,7 +914,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -928,7 +928,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "text/html,test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -942,7 +942,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "1234567890");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -956,7 +956,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -970,7 +970,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:////foo/bar.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -984,7 +984,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -998,7 +998,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1012,7 +1012,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1026,7 +1026,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"server");
@@ -1040,7 +1040,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"server");
@@ -1054,7 +1054,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"server");
@@ -1068,7 +1068,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1082,7 +1082,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/home/me");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1096,7 +1096,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1110,7 +1110,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1124,7 +1124,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/tmp/mock/test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1138,7 +1138,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/tmp/mock/test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1152,7 +1152,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1166,7 +1166,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/.foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1180,7 +1180,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1194,7 +1194,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1208,7 +1208,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1222,7 +1222,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1236,7 +1236,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/..bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1250,7 +1250,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/ton");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1264,7 +1264,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1278,7 +1278,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/ton");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1292,7 +1292,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1306,7 +1306,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/%2e%2");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1320,7 +1320,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%2e.bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1334,7 +1334,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1348,7 +1348,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1362,7 +1362,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1376,7 +1376,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1390,7 +1390,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%20foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1404,7 +1404,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1418,7 +1418,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1432,7 +1432,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2zbar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1446,7 +1446,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2%C3%82%C2%A9zbar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1460,7 +1460,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%41%7a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1474,7 +1474,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%C2%91%91");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1488,7 +1488,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%00%51");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1502,7 +1502,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/(%28:%3A%29)");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1516,7 +1516,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%3A%3a%3C%3c");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1530,7 +1530,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foobar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1544,7 +1544,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//foo//bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1558,7 +1558,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%7Ffp3%3Eju%3Dduvgw%3Dd");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1572,7 +1572,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/@asdf%40");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1586,7 +1586,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1600,7 +1600,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E2%80%A5/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1614,7 +1614,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%EF%BB%BF/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1628,7 +1628,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E2%80%AE/foo/%E2%80%AD/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -1642,7 +1642,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo?bar=baz");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.google.com");
@@ -1656,7 +1656,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo?bar=baz");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.google.com");
@@ -1670,7 +1670,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1684,7 +1684,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2Ehtml");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www");
@@ -1698,7 +1698,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www");
@@ -1712,7 +1712,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.google.com");
@@ -1726,7 +1726,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1740,7 +1740,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1754,7 +1754,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1768,7 +1768,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1782,7 +1782,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1796,7 +1796,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1810,7 +1810,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1824,7 +1824,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1838,7 +1838,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1852,7 +1852,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1866,7 +1866,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1880,7 +1880,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1894,7 +1894,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1908,7 +1908,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1922,7 +1922,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1936,7 +1936,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/aaa/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1950,7 +1950,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1964,7 +1964,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E4%B8%AD/test.txt");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"www.example.com");
@@ -1978,7 +1978,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/...");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -1992,7 +1992,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2006,7 +2006,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%EF%BF%BD?%EF%BF%BD");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"x");
@@ -2020,7 +2020,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.com");
@@ -2034,7 +2034,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2048,7 +2048,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "x@x.com");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2062,7 +2062,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), ",");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2076,7 +2076,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "blank");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2090,7 +2090,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test?test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2104,7 +2104,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%60%7B%7D?`{}");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"h");
@@ -2119,7 +2119,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?%27");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -2133,7 +2133,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?'");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -2147,7 +2147,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/some/path");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2161,7 +2161,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/smth");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2175,7 +2175,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/some/path");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2189,7 +2189,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2203,7 +2203,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"ho");
@@ -2217,7 +2217,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2231,7 +2231,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2245,7 +2245,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"ho");
@@ -2259,7 +2259,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2273,7 +2273,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2287,7 +2287,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"ho");
@@ -2301,7 +2301,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2315,7 +2315,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa?i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2329,7 +2329,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa?i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"ho");
@@ -2343,7 +2343,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa?i");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2357,7 +2357,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "sd");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2371,7 +2371,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "sd/sd");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2385,7 +2385,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2399,7 +2399,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"ho");
@@ -2413,7 +2413,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2427,7 +2427,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"%C3%B1");
@@ -2449,7 +2449,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), ":a@example.net");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2463,7 +2463,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "%NBD");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2477,7 +2477,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "%1G");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2491,7 +2491,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/relative_import.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"127.0.0.1");
@@ -2505,7 +2505,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?foo=%7B%22abc%22");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"facebook.com");
@@ -2519,7 +2519,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/jqueryui@1.2.3");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"localhost");
@@ -2533,7 +2533,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path?query");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -2547,7 +2547,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar?a=b&c=d");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2561,7 +2561,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar??a=b&c=d");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2575,7 +2575,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -2589,7 +2589,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.bar");
@@ -2603,7 +2603,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.bar");
@@ -2617,7 +2617,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.bar");
@@ -2631,7 +2631,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.bar");
@@ -2645,7 +2645,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foo.bar");
@@ -2659,7 +2659,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C%3A/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2673,7 +2673,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C%7C/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2687,7 +2687,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/Users/Domenic/Dropbox/GitHub/tmpvar/jsdom/test/level2/html/files/pix/submit.gif");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2701,7 +2701,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2715,7 +2715,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2729,7 +2729,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2743,7 +2743,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2757,7 +2757,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2771,7 +2771,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2785,7 +2785,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2799,7 +2799,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2813,7 +2813,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2827,7 +2827,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2841,7 +2841,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?fox");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2855,7 +2855,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//cat");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2869,7 +2869,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//cat");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2883,7 +2883,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/mouse");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2897,7 +2897,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2911,7 +2911,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2925,7 +2925,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2939,7 +2939,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//pig");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"lion");
@@ -2953,7 +2953,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/rooibos");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"tea");
@@ -2967,7 +2967,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?chai");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"tea");
@@ -2981,7 +2981,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -2995,7 +2995,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3009,7 +3009,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3023,7 +3023,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3037,7 +3037,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3051,7 +3051,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3065,7 +3065,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/dir/C");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -3079,7 +3079,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/dir/C|a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -3093,7 +3093,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3107,7 +3107,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3121,7 +3121,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3135,7 +3135,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3149,7 +3149,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3163,7 +3163,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3177,7 +3177,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3191,7 +3191,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3205,7 +3205,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3219,7 +3219,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?q=v");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3233,7 +3233,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "?x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"%C3%B1");
@@ -3247,7 +3247,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "?x");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"%C3%B1");
@@ -3261,7 +3261,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3275,7 +3275,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//x/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3289,7 +3289,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/someconfig;mode=netascii");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"foobar.com");
@@ -3303,7 +3303,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/Index.ut2");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"10.10.10.10");
@@ -3317,7 +3317,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/0?baz=bam&qux=baz");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"somehost");
@@ -3331,7 +3331,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/sup");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"host");
@@ -3345,7 +3345,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar.git");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"github.com");
@@ -3359,7 +3359,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/channel?passwd");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"myserver.com");
@@ -3373,7 +3373,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo.bar.org?type=TXT");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"fw.example.org");
@@ -3387,7 +3387,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/ou=People,o=JNDITutorial");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"localhost");
@@ -3401,7 +3401,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"github.com");
@@ -3415,7 +3415,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "ietf:rfc:2648");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3429,7 +3429,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "joe@example.org,2001:foo/bar");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3443,7 +3443,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"H%4fSt");
@@ -3457,7 +3457,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "https://example.com:443/");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3471,7 +3471,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "d3958f5c-0777-0845-9dcf-2cb28783acaf");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3485,7 +3485,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%22");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3499,7 +3499,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3513,7 +3513,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%3C");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3527,7 +3527,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%3E");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3541,7 +3541,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%E2%8C%A3");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3555,7 +3555,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%23%23");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3569,7 +3569,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%GH");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3583,7 +3583,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3597,7 +3597,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
@@ -3611,7 +3611,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3625,7 +3625,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-slash.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3639,7 +3639,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-b.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"");
@@ -3653,7 +3653,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-slash-b.html");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"b");
@@ -3667,7 +3667,7 @@ req! {
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");
-        assert_eq!(req.version.unwrap(), 1);
+        assert_eq!(req.version.unwrap(), 0);
         assert_eq!(req.headers.len(), 1);
         assert_eq!(req.headers[0].name, "Host");
         assert_eq!(req.headers[0].value, b"example.org");
