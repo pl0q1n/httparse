@@ -1,4 +1,3 @@
-#![doc(html_root_url = "https://docs.rs/httparse/1.3.3")]
 #![cfg_attr(not(feature = "std"), no_std)]
 #![cfg_attr(test, deny(warnings))]
 #![deny(missing_docs)]
@@ -257,8 +256,8 @@ impl<T> Status<T> {
 ///
 /// ```no_run
 /// let buf = b"GET /404 RTSP/1.0\r\nHost:";
-/// let mut headers = [httparse::EMPTY_HEADER; 16];
-/// let mut req = httparse::Request::new(&mut headers);
+/// let mut headers = [rtsparse::EMPTY_HEADER; 16];
+/// let mut req = rtsparse::Request::new(&mut headers);
 /// let res = req.parse(buf).unwrap();
 /// if res.is_partial() {
 ///     match req.path {
@@ -423,7 +422,7 @@ pub struct Header<'a> {
 /// # Example
 ///
 /// ```
-/// let headers = [httparse::EMPTY_HEADER; 64];
+/// let headers = [rtsparse::EMPTY_HEADER; 64];
 /// ```
 pub const EMPTY_HEADER: Header<'static> = Header { name: "", value: b"" };
 
@@ -542,11 +541,11 @@ fn parse_code(bytes: &mut Bytes) -> Result<u16> {
 ///
 /// ```
 /// let buf = b"Host: foo.bar\nAccept: */*\n\nblah blah";
-/// let mut headers = [httparse::EMPTY_HEADER; 4];
-/// assert_eq!(httparse::parse_headers(buf, &mut headers),
-///            Ok(httparse::Status::Complete((27, &[
-///                httparse::Header { name: "Host", value: b"foo.bar" },
-///                httparse::Header { name: "Accept", value: b"*/*" }
+/// let mut headers = [rtsparse::EMPTY_HEADER; 4];
+/// assert_eq!(rtsparse::parse_headers(buf, &mut headers),
+///            Ok(rtsparse::Status::Complete((27, &[
+///                rtsparse::Header { name: "Host", value: b"foo.bar" },
+///                rtsparse::Header { name: "Accept", value: b"*/*" }
 ///            ][..]))));
 /// ```
 pub fn parse_headers<'b: 'h, 'h>(src: &'b [u8], mut dst: &'h mut [Header<'b>])
@@ -695,8 +694,8 @@ fn parse_headers_iter<'a, 'b>(headers: &mut &mut [Header<'a>], bytes: &'b mut By
 ///
 /// ```
 /// let buf = b"4\r\nRust\r\n0\r\n\r\n";
-/// assert_eq!(httparse::parse_chunk_size(buf),
-///            Ok(httparse::Status::Complete((3, 4))));
+/// assert_eq!(rtsparse::parse_chunk_size(buf),
+///            Ok(rtsparse::Status::Complete((3, 4))));
 /// ```
 pub fn parse_chunk_size(buf: &[u8])
     -> result::Result<Status<(usize, u64)>, InvalidChunkSize> {

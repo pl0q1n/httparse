@@ -1,6 +1,6 @@
-extern crate httparse;
+extern crate rtsparse;
 
-use httparse::{Error, Request, Status, EMPTY_HEADER};
+use rtsparse::{Error, Request, Status, EMPTY_HEADER};
 
 const NUM_OF_HEADERS: usize = 4;
 

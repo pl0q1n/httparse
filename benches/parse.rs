@@ -1,12 +1,12 @@
 #![feature(test)]
 
 extern crate pico_sys as pico;
-extern crate httparse;
+extern crate rtsparse;
 
 extern crate test;
 
 const REQ_SHORT: &'static [u8] = b"\
-GET / HTTP/1.0\r\n\
+GET / RTSP/1.0\r\n\
 Host: example.com\r\n\
 Cookie: session=60; user_id=1\r\n\r\n";
 
@@ -63,11 +63,11 @@ fn bench_pico(b: &mut test::Bencher) {
 }
 
 #[bench]
-fn bench_httparse(b: &mut test::Bencher) {
-    let mut headers = [httparse::Header{ name: "", value: &[] }; 16];
-    let mut req = httparse::Request::new(&mut headers);
+fn bench_rtsparse(b: &mut test::Bencher) {
+    let mut headers = [rtsparse::Header{ name: "", value: &[] }; 16];
+    let mut req = rtsparse::Request::new(&mut headers);
     b.iter(|| {
-        assert_eq!(req.parse(REQ).unwrap(), httparse::Status::Complete(REQ.len()));
+        assert_eq!(req.parse(REQ).unwrap(), rtsparse::Status::Complete(REQ.len()));
     });
     b.bytes = REQ.len() as u64;
 }
@@ -112,11 +112,11 @@ fn bench_pico_short(b: &mut test::Bencher) {
 }
 
 #[bench]
-fn bench_httparse_short(b: &mut test::Bencher) {
-    let mut headers = [httparse::Header{ name: "", value: &[] }; 16];
-    let mut req = httparse::Request::new(&mut headers);
+fn bench_rtsparse_short(b: &mut test::Bencher) {
+    let mut headers = [rtsparse::Header{ name: "", value: &[] }; 16];
+    let mut req = rtsparse::Request::new(&mut headers);
     b.iter(|| {
-        assert_eq!(req.parse(REQ_SHORT).unwrap(), httparse::Status::Complete(REQ_SHORT.len()));
+        assert_eq!(req.parse(REQ_SHORT).unwrap(), rtsparse::Status::Complete(REQ_SHORT.len()));
     });
     b.bytes = REQ_SHORT.len() as u64;
 }
