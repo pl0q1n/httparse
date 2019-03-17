@@ -26,7 +26,7 @@ macro_rules! req {
 
 req! {
     urltest_001,
-    b"GET /bar;par?b HTTP/1.1\r\nHost: foo\r\n\r\n",
+    b"GET /bar;par?b RTSP/1.0\r\nHost: foo\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar;par?b");
@@ -40,7 +40,7 @@ req! {
 
 req! {
     urltest_002,
-    b"GET /x HTTP/1.1\r\nHost: test\r\n\r\n",
+    b"GET /x RTSP/1.0\r\nHost: test\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
@@ -54,7 +54,7 @@ req! {
 
 req! {
     urltest_003,
-    b"GET /x HTTP/1.1\r\nHost: test\r\n\r\n",
+    b"GET /x RTSP/1.0\r\nHost: test\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
@@ -68,7 +68,7 @@ req! {
 
 req! {
     urltest_004,
-    b"GET /foo/foo.com HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/foo.com RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/foo.com");
@@ -82,7 +82,7 @@ req! {
 
 req! {
     urltest_005,
-    b"GET /foo/:foo.com HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:foo.com RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com");
@@ -96,7 +96,7 @@ req! {
 
 req! {
     urltest_006,
-    b"GET /foo/foo.com HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/foo.com RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/foo.com");
@@ -110,7 +110,7 @@ req! {
 
 req! {
     urltest_007,
-    b"GET  foo.com HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET  foo.com RTSP/1.0\r\nHost: \r\n\r\n",
     Err(Error::Version),
     |_r| {}
 }
@@ -118,7 +118,7 @@ req! {
 
 req! {
     urltest_008,
-    b"GET /%20b%20?%20d%20 HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /%20b%20?%20d%20 RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%20b%20?%20d%20");
@@ -132,7 +132,7 @@ req! {
 
 req! {
     urltest_009,
-    b"GET x x HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET x x RTSP/1.0\r\nHost: \r\n\r\n",
     Err(Error::Version),
     |_r| {}
 }
@@ -140,7 +140,7 @@ req! {
 
 req! {
     urltest_010,
-    b"GET /c HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /c RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
@@ -154,7 +154,7 @@ req! {
 
 req! {
     urltest_011,
-    b"GET /c HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /c RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
@@ -168,7 +168,7 @@ req! {
 
 req! {
     urltest_012,
-    b"GET /c HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /c RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
@@ -182,7 +182,7 @@ req! {
 
 req! {
     urltest_013,
-    b"GET /c HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /c RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
@@ -196,7 +196,7 @@ req! {
 
 req! {
     urltest_014,
-    b"GET /c HTTP/1.1\r\nHost: f\r\n\r\n",
+    b"GET /c RTSP/1.0\r\nHost: f\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c");
@@ -210,7 +210,7 @@ req! {
 
 req! {
     urltest_015,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -224,7 +224,7 @@ req! {
 
 req! {
     urltest_016,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -238,7 +238,7 @@ req! {
 
 req! {
     urltest_017,
-    b"GET /foo/:foo.com/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:foo.com/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com/");
@@ -252,7 +252,7 @@ req! {
 
 req! {
     urltest_018,
-    b"GET /foo/:foo.com/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:foo.com/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:foo.com/");
@@ -266,7 +266,7 @@ req! {
 
 req! {
     urltest_019,
-    b"GET /foo/: HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/: RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:");
@@ -280,7 +280,7 @@ req! {
 
 req! {
     urltest_020,
-    b"GET /foo/:a HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:a RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:a");
@@ -294,7 +294,7 @@ req! {
 
 req! {
     urltest_021,
-    b"GET /foo/:/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:/");
@@ -308,7 +308,7 @@ req! {
 
 req! {
     urltest_022,
-    b"GET /foo/:/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:/");
@@ -322,7 +322,7 @@ req! {
 
 req! {
     urltest_023,
-    b"GET /foo/: HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/: RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:");
@@ -336,7 +336,7 @@ req! {
 
 req! {
     urltest_024,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -350,7 +350,7 @@ req! {
 
 req! {
     urltest_025,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -364,7 +364,7 @@ req! {
 
 req! {
     urltest_026,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -378,7 +378,7 @@ req! {
 
 req! {
     urltest_027,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -392,7 +392,7 @@ req! {
 
 req! {
     urltest_028,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -406,7 +406,7 @@ req! {
 
 req! {
     urltest_029,
-    b"GET /foo/:23 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:23 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:23");
@@ -420,7 +420,7 @@ req! {
 
 req! {
     urltest_030,
-    b"GET /:23 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /:23 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/:23");
@@ -434,7 +434,7 @@ req! {
 
 req! {
     urltest_031,
-    b"GET /foo/:: HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:: RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/::");
@@ -448,7 +448,7 @@ req! {
 
 req! {
     urltest_032,
-    b"GET /foo/::23 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/::23 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/::23");
@@ -462,7 +462,7 @@ req! {
 
 req! {
     urltest_033,
-    b"GET /d HTTP/1.1\r\nHost: c\r\n\r\n",
+    b"GET /d RTSP/1.0\r\nHost: c\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d");
@@ -476,7 +476,7 @@ req! {
 
 req! {
     urltest_034,
-    b"GET /foo/:@c:29 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/:@c:29 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/:@c:29");
@@ -490,7 +490,7 @@ req! {
 
 req! {
     urltest_035,
-    b"GET //@ HTTP/1.1\r\nHost: foo.com\r\n\r\n",
+    b"GET //@ RTSP/1.0\r\nHost: foo.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//@");
@@ -504,7 +504,7 @@ req! {
 
 req! {
     urltest_036,
-    b"GET /b:c/d@foo.com/ HTTP/1.1\r\nHost: a\r\n\r\n",
+    b"GET /b:c/d@foo.com/ RTSP/1.0\r\nHost: a\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/b:c/d@foo.com/");
@@ -518,7 +518,7 @@ req! {
 
 req! {
     urltest_037,
-    b"GET /bar.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /bar.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar.com/");
@@ -532,7 +532,7 @@ req! {
 
 req! {
     urltest_038,
-    b"GET /////// HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /////// RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "///////");
@@ -546,7 +546,7 @@ req! {
 
 req! {
     urltest_039,
-    b"GET ///////bar.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET ///////bar.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "///////bar.com/");
@@ -560,7 +560,7 @@ req! {
 
 req! {
     urltest_040,
-    b"GET //:///// HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET //:///// RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//://///");
@@ -574,7 +574,7 @@ req! {
 
 req! {
     urltest_041,
-    b"GET /foo HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /foo RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
@@ -588,7 +588,7 @@ req! {
 
 req! {
     urltest_042,
-    b"GET /bar HTTP/1.1\r\nHost: foo\r\n\r\n",
+    b"GET /bar RTSP/1.0\r\nHost: foo\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar");
@@ -602,7 +602,7 @@ req! {
 
 req! {
     urltest_043,
-    b"GET /path;a??e HTTP/1.1\r\nHost: foo\r\n\r\n",
+    b"GET /path;a??e RTSP/1.0\r\nHost: foo\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path;a??e");
@@ -616,7 +616,7 @@ req! {
 
 req! {
     urltest_044,
-    b"GET /abcd?efgh?ijkl HTTP/1.1\r\nHost: foo\r\n\r\n",
+    b"GET /abcd?efgh?ijkl RTSP/1.0\r\nHost: foo\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/abcd?efgh?ijkl");
@@ -630,7 +630,7 @@ req! {
 
 req! {
     urltest_045,
-    b"GET /abcd HTTP/1.1\r\nHost: foo\r\n\r\n",
+    b"GET /abcd RTSP/1.0\r\nHost: foo\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/abcd");
@@ -644,7 +644,7 @@ req! {
 
 req! {
     urltest_046,
-    b"GET /foo/[61:24:74]:98 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/[61:24:74]:98 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/[61:24:74]:98");
@@ -658,7 +658,7 @@ req! {
 
 req! {
     urltest_047,
-    b"GET /foo/[61:27]/:foo HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/[61:27]/:foo RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/[61:27]/:foo");
@@ -672,7 +672,7 @@ req! {
 
 req! {
     urltest_048,
-    b"GET /example.com/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -686,7 +686,7 @@ req! {
 
 req! {
     urltest_049,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -700,7 +700,7 @@ req! {
 
 req! {
     urltest_050,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -714,7 +714,7 @@ req! {
 
 req! {
     urltest_051,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -728,7 +728,7 @@ req! {
 
 req! {
     urltest_052,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -742,7 +742,7 @@ req! {
 
 req! {
     urltest_053,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -756,7 +756,7 @@ req! {
 
 req! {
     urltest_054,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -770,7 +770,7 @@ req! {
 
 req! {
     urltest_055,
-    b"GET /foo/example.com/ HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/example.com/ RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/example.com/");
@@ -784,7 +784,7 @@ req! {
 
 req! {
     urltest_056,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -798,7 +798,7 @@ req! {
 
 req! {
     urltest_057,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -812,7 +812,7 @@ req! {
 
 req! {
     urltest_058,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -826,7 +826,7 @@ req! {
 
 req! {
     urltest_059,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -840,7 +840,7 @@ req! {
 
 req! {
     urltest_060,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -854,7 +854,7 @@ req! {
 
 req! {
     urltest_061,
-    b"GET /a/b/c HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /a/b/c RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/b/c");
@@ -868,7 +868,7 @@ req! {
 
 req! {
     urltest_062,
-    b"GET /a/%20/c HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /a/%20/c RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/%20/c");
@@ -882,7 +882,7 @@ req! {
 
 req! {
     urltest_063,
-    b"GET /a%2fc HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /a%2fc RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a%2fc");
@@ -896,7 +896,7 @@ req! {
 
 req! {
     urltest_064,
-    b"GET /a/%2f/c HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /a/%2f/c RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a/%2f/c");
@@ -910,7 +910,7 @@ req! {
 
 req! {
     urltest_065,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -924,7 +924,7 @@ req! {
 
 req! {
     urltest_066,
-    b"GET text/html,test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET text/html,test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "text/html,test");
@@ -938,7 +938,7 @@ req! {
 
 req! {
     urltest_067,
-    b"GET 1234567890 HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET 1234567890 RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "1234567890");
@@ -952,7 +952,7 @@ req! {
 
 req! {
     urltest_068,
-    b"GET /c:/foo/bar.html HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:/foo/bar.html RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar.html");
@@ -966,7 +966,7 @@ req! {
 
 req! {
     urltest_069,
-    b"GET /c:////foo/bar.html HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:////foo/bar.html RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:////foo/bar.html");
@@ -980,7 +980,7 @@ req! {
 
 req! {
     urltest_070,
-    b"GET /C:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
@@ -994,7 +994,7 @@ req! {
 
 req! {
     urltest_071,
-    b"GET /C:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
@@ -1008,7 +1008,7 @@ req! {
 
 req! {
     urltest_072,
-    b"GET /C:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/foo/bar");
@@ -1022,7 +1022,7 @@ req! {
 
 req! {
     urltest_073,
-    b"GET /file HTTP/1.1\r\nHost: server\r\n\r\n",
+    b"GET /file RTSP/1.0\r\nHost: server\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
@@ -1036,7 +1036,7 @@ req! {
 
 req! {
     urltest_074,
-    b"GET /file HTTP/1.1\r\nHost: server\r\n\r\n",
+    b"GET /file RTSP/1.0\r\nHost: server\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
@@ -1050,7 +1050,7 @@ req! {
 
 req! {
     urltest_075,
-    b"GET /file HTTP/1.1\r\nHost: server\r\n\r\n",
+    b"GET /file RTSP/1.0\r\nHost: server\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/file");
@@ -1064,7 +1064,7 @@ req! {
 
 req! {
     urltest_076,
-    b"GET /foo/bar.txt HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /foo/bar.txt RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar.txt");
@@ -1078,7 +1078,7 @@ req! {
 
 req! {
     urltest_077,
-    b"GET /home/me HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /home/me RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/home/me");
@@ -1092,7 +1092,7 @@ req! {
 
 req! {
     urltest_078,
-    b"GET /test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
@@ -1106,7 +1106,7 @@ req! {
 
 req! {
     urltest_079,
-    b"GET /test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
@@ -1120,7 +1120,7 @@ req! {
 
 req! {
     urltest_080,
-    b"GET /tmp/mock/test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /tmp/mock/test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/tmp/mock/test");
@@ -1134,7 +1134,7 @@ req! {
 
 req! {
     urltest_081,
-    b"GET /tmp/mock/test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /tmp/mock/test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/tmp/mock/test");
@@ -1148,7 +1148,7 @@ req! {
 
 req! {
     urltest_082,
-    b"GET /foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
@@ -1162,7 +1162,7 @@ req! {
 
 req! {
     urltest_083,
-    b"GET /.foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /.foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/.foo");
@@ -1176,7 +1176,7 @@ req! {
 
 req! {
     urltest_084,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1190,7 +1190,7 @@ req! {
 
 req! {
     urltest_085,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1204,7 +1204,7 @@ req! {
 
 req! {
     urltest_086,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1218,7 +1218,7 @@ req! {
 
 req! {
     urltest_087,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1232,7 +1232,7 @@ req! {
 
 req! {
     urltest_088,
-    b"GET /foo/..bar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/..bar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/..bar");
@@ -1246,7 +1246,7 @@ req! {
 
 req! {
     urltest_089,
-    b"GET /foo/ton HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ton RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/ton");
@@ -1260,7 +1260,7 @@ req! {
 
 req! {
     urltest_090,
-    b"GET /a HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /a RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a");
@@ -1274,7 +1274,7 @@ req! {
 
 req! {
     urltest_091,
-    b"GET /ton HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /ton RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/ton");
@@ -1288,7 +1288,7 @@ req! {
 
 req! {
     urltest_092,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1302,7 +1302,7 @@ req! {
 
 req! {
     urltest_093,
-    b"GET /foo/%2e%2 HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/%2e%2 RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/%2e%2");
@@ -1316,7 +1316,7 @@ req! {
 
 req! {
     urltest_094,
-    b"GET /%2e.bar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%2e.bar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%2e.bar");
@@ -1330,7 +1330,7 @@ req! {
 
 req! {
     urltest_095,
-    b"GET // HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET // RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//");
@@ -1344,7 +1344,7 @@ req! {
 
 req! {
     urltest_096,
-    b"GET /foo/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/");
@@ -1358,7 +1358,7 @@ req! {
 
 req! {
     urltest_097,
-    b"GET /foo/bar/ HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo/bar/ RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar/");
@@ -1372,7 +1372,7 @@ req! {
 
 req! {
     urltest_098,
-    b"GET /foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
@@ -1386,7 +1386,7 @@ req! {
 
 req! {
     urltest_099,
-    b"GET /%20foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%20foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%20foo");
@@ -1400,7 +1400,7 @@ req! {
 
 req! {
     urltest_100,
-    b"GET /foo% HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo% RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%");
@@ -1414,7 +1414,7 @@ req! {
 
 req! {
     urltest_101,
-    b"GET /foo%2 HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%2 RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2");
@@ -1428,7 +1428,7 @@ req! {
 
 req! {
     urltest_102,
-    b"GET /foo%2zbar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%2zbar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2zbar");
@@ -1442,7 +1442,7 @@ req! {
 
 req! {
     urltest_103,
-    b"GET /foo%2%C3%82%C2%A9zbar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%2%C3%82%C2%A9zbar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2%C3%82%C2%A9zbar");
@@ -1456,7 +1456,7 @@ req! {
 
 req! {
     urltest_104,
-    b"GET /foo%41%7a HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%41%7a RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%41%7a");
@@ -1470,7 +1470,7 @@ req! {
 
 req! {
     urltest_105,
-    b"GET /foo%C2%91%91 HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%C2%91%91 RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%C2%91%91");
@@ -1484,7 +1484,7 @@ req! {
 
 req! {
     urltest_106,
-    b"GET /foo%00%51 HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foo%00%51 RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%00%51");
@@ -1498,7 +1498,7 @@ req! {
 
 req! {
     urltest_107,
-    b"GET /(%28:%3A%29) HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /(%28:%3A%29) RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/(%28:%3A%29)");
@@ -1512,7 +1512,7 @@ req! {
 
 req! {
     urltest_108,
-    b"GET /%3A%3a%3C%3c HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%3A%3a%3C%3c RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%3A%3a%3C%3c");
@@ -1526,7 +1526,7 @@ req! {
 
 req! {
     urltest_109,
-    b"GET /foobar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /foobar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foobar");
@@ -1540,7 +1540,7 @@ req! {
 
 req! {
     urltest_110,
-    b"GET //foo//bar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET //foo//bar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//foo//bar");
@@ -1554,7 +1554,7 @@ req! {
 
 req! {
     urltest_111,
-    b"GET /%7Ffp3%3Eju%3Dduvgw%3Dd HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%7Ffp3%3Eju%3Dduvgw%3Dd RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%7Ffp3%3Eju%3Dduvgw%3Dd");
@@ -1568,7 +1568,7 @@ req! {
 
 req! {
     urltest_112,
-    b"GET /@asdf%40 HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /@asdf%40 RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/@asdf%40");
@@ -1582,7 +1582,7 @@ req! {
 
 req! {
     urltest_113,
-    b"GET /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD");
@@ -1596,7 +1596,7 @@ req! {
 
 req! {
     urltest_114,
-    b"GET /%E2%80%A5/foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%E2%80%A5/foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E2%80%A5/foo");
@@ -1610,7 +1610,7 @@ req! {
 
 req! {
     urltest_115,
-    b"GET /%EF%BB%BF/foo HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%EF%BB%BF/foo RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%EF%BB%BF/foo");
@@ -1624,7 +1624,7 @@ req! {
 
 req! {
     urltest_116,
-    b"GET /%E2%80%AE/foo/%E2%80%AD/bar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /%E2%80%AE/foo/%E2%80%AD/bar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E2%80%AE/foo/%E2%80%AD/bar");
@@ -1638,7 +1638,7 @@ req! {
 
 req! {
     urltest_117,
-    b"GET /foo?bar=baz HTTP/1.1\r\nHost: www.google.com\r\n\r\n",
+    b"GET /foo?bar=baz RTSP/1.0\r\nHost: www.google.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo?bar=baz");
@@ -1652,7 +1652,7 @@ req! {
 
 req! {
     urltest_118,
-    b"GET /foo?bar=baz HTTP/1.1\r\nHost: www.google.com\r\n\r\n",
+    b"GET /foo?bar=baz RTSP/1.0\r\nHost: www.google.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo?bar=baz");
@@ -1666,7 +1666,7 @@ req! {
 
 req! {
     urltest_119,
-    b"GET test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test");
@@ -1680,7 +1680,7 @@ req! {
 
 req! {
     urltest_120,
-    b"GET /foo%2Ehtml HTTP/1.1\r\nHost: www\r\n\r\n",
+    b"GET /foo%2Ehtml RTSP/1.0\r\nHost: www\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo%2Ehtml");
@@ -1694,7 +1694,7 @@ req! {
 
 req! {
     urltest_121,
-    b"GET /foo/html HTTP/1.1\r\nHost: www\r\n\r\n",
+    b"GET /foo/html RTSP/1.0\r\nHost: www\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/html");
@@ -1708,7 +1708,7 @@ req! {
 
 req! {
     urltest_122,
-    b"GET /foo HTTP/1.1\r\nHost: www.google.com\r\n\r\n",
+    b"GET /foo RTSP/1.0\r\nHost: www.google.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo");
@@ -1722,7 +1722,7 @@ req! {
 
 req! {
     urltest_123,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1736,7 +1736,7 @@ req! {
 
 req! {
     urltest_124,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1750,7 +1750,7 @@ req! {
 
 req! {
     urltest_125,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1764,7 +1764,7 @@ req! {
 
 req! {
     urltest_126,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1778,7 +1778,7 @@ req! {
 
 req! {
     urltest_127,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1792,7 +1792,7 @@ req! {
 
 req! {
     urltest_128,
-    b"GET /example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/example.com/");
@@ -1806,7 +1806,7 @@ req! {
 
 req! {
     urltest_129,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -1820,7 +1820,7 @@ req! {
 
 req! {
     urltest_130,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -1834,7 +1834,7 @@ req! {
 
 req! {
     urltest_131,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -1848,7 +1848,7 @@ req! {
 
 req! {
     urltest_132,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -1862,7 +1862,7 @@ req! {
 
 req! {
     urltest_133,
-    b"GET example.com/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET example.com/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "example.com/");
@@ -1876,7 +1876,7 @@ req! {
 
 req! {
     urltest_134,
-    b"GET /test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
@@ -1890,7 +1890,7 @@ req! {
 
 req! {
     urltest_135,
-    b"GET /test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
@@ -1904,7 +1904,7 @@ req! {
 
 req! {
     urltest_136,
-    b"GET /test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
@@ -1918,7 +1918,7 @@ req! {
 
 req! {
     urltest_137,
-    b"GET /test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
@@ -1932,7 +1932,7 @@ req! {
 
 req! {
     urltest_138,
-    b"GET /aaa/test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /aaa/test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/aaa/test.txt");
@@ -1946,7 +1946,7 @@ req! {
 
 req! {
     urltest_139,
-    b"GET /test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test.txt");
@@ -1960,7 +1960,7 @@ req! {
 
 req! {
     urltest_140,
-    b"GET /%E4%B8%AD/test.txt HTTP/1.1\r\nHost: www.example.com\r\n\r\n",
+    b"GET /%E4%B8%AD/test.txt RTSP/1.0\r\nHost: www.example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%E4%B8%AD/test.txt");
@@ -1974,7 +1974,7 @@ req! {
 
 req! {
     urltest_141,
-    b"GET /... HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /... RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/...");
@@ -1988,7 +1988,7 @@ req! {
 
 req! {
     urltest_142,
-    b"GET /a HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /a RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/a");
@@ -2002,7 +2002,7 @@ req! {
 
 req! {
     urltest_143,
-    b"GET /%EF%BF%BD?%EF%BF%BD HTTP/1.1\r\nHost: x\r\n\r\n",
+    b"GET /%EF%BF%BD?%EF%BF%BD RTSP/1.0\r\nHost: x\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%EF%BF%BD?%EF%BF%BD");
@@ -2016,7 +2016,7 @@ req! {
 
 req! {
     urltest_144,
-    b"GET /bar HTTP/1.1\r\nHost: example.com\r\n\r\n",
+    b"GET /bar RTSP/1.0\r\nHost: example.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/bar");
@@ -2030,7 +2030,7 @@ req! {
 
 req! {
     urltest_145,
-    b"GET test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test");
@@ -2044,7 +2044,7 @@ req! {
 
 req! {
     urltest_146,
-    b"GET x@x.com HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET x@x.com RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "x@x.com");
@@ -2058,7 +2058,7 @@ req! {
 
 req! {
     urltest_147,
-    b"GET , HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET , RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), ",");
@@ -2072,7 +2072,7 @@ req! {
 
 req! {
     urltest_148,
-    b"GET blank HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET blank RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "blank");
@@ -2086,7 +2086,7 @@ req! {
 
 req! {
     urltest_149,
-    b"GET test?test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET test?test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "test?test");
@@ -2100,7 +2100,7 @@ req! {
 
 req! {
     urltest_150,
-    b"GET /%60%7B%7D?`{} HTTP/1.1\r\nHost: h\r\n\r\n",
+    b"GET /%60%7B%7D?`{} RTSP/1.0\r\nHost: h\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/%60%7B%7D?`{}");
@@ -2115,7 +2115,7 @@ req! {
 
 req! {
     urltest_151,
-    b"GET /?%27 HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /?%27 RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?%27");
@@ -2129,7 +2129,7 @@ req! {
 
 req! {
     urltest_152,
-    b"GET /?' HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /?' RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?'");
@@ -2143,7 +2143,7 @@ req! {
 
 req! {
     urltest_153,
-    b"GET /some/path HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /some/path RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/some/path");
@@ -2157,7 +2157,7 @@ req! {
 
 req! {
     urltest_154,
-    b"GET /smth HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /smth RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/smth");
@@ -2171,7 +2171,7 @@ req! {
 
 req! {
     urltest_155,
-    b"GET /some/path HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /some/path RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/some/path");
@@ -2185,7 +2185,7 @@ req! {
 
 req! {
     urltest_156,
-    b"GET /pa/i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/i");
@@ -2199,7 +2199,7 @@ req! {
 
 req! {
     urltest_157,
-    b"GET /i HTTP/1.1\r\nHost: ho\r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: ho\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2213,7 +2213,7 @@ req! {
 
 req! {
     urltest_158,
-    b"GET /pa/i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/i");
@@ -2227,7 +2227,7 @@ req! {
 
 req! {
     urltest_159,
-    b"GET /i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2241,7 +2241,7 @@ req! {
 
 req! {
     urltest_160,
-    b"GET /i HTTP/1.1\r\nHost: ho\r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: ho\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2255,7 +2255,7 @@ req! {
 
 req! {
     urltest_161,
-    b"GET /i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2269,7 +2269,7 @@ req! {
 
 req! {
     urltest_162,
-    b"GET /i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2283,7 +2283,7 @@ req! {
 
 req! {
     urltest_163,
-    b"GET /i HTTP/1.1\r\nHost: ho\r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: ho\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2297,7 +2297,7 @@ req! {
 
 req! {
     urltest_164,
-    b"GET /i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/i");
@@ -2311,7 +2311,7 @@ req! {
 
 req! {
     urltest_165,
-    b"GET /pa/pa?i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/pa?i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa?i");
@@ -2325,7 +2325,7 @@ req! {
 
 req! {
     urltest_166,
-    b"GET /pa?i HTTP/1.1\r\nHost: ho\r\n\r\n",
+    b"GET /pa?i RTSP/1.0\r\nHost: ho\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa?i");
@@ -2339,7 +2339,7 @@ req! {
 
 req! {
     urltest_167,
-    b"GET /pa/pa?i HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/pa?i RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa?i");
@@ -2353,7 +2353,7 @@ req! {
 
 req! {
     urltest_168,
-    b"GET sd HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET sd RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "sd");
@@ -2367,7 +2367,7 @@ req! {
 
 req! {
     urltest_169,
-    b"GET sd/sd HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET sd/sd RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "sd/sd");
@@ -2381,7 +2381,7 @@ req! {
 
 req! {
     urltest_170,
-    b"GET /pa/pa HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/pa RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa");
@@ -2395,7 +2395,7 @@ req! {
 
 req! {
     urltest_171,
-    b"GET /pa HTTP/1.1\r\nHost: ho\r\n\r\n",
+    b"GET /pa RTSP/1.0\r\nHost: ho\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa");
@@ -2409,7 +2409,7 @@ req! {
 
 req! {
     urltest_172,
-    b"GET /pa/pa HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pa/pa RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pa/pa");
@@ -2423,7 +2423,7 @@ req! {
 
 req! {
     urltest_173,
-    b"GET /x HTTP/1.1\r\nHost: %C3%B1\r\n\r\n",
+    b"GET /x RTSP/1.0\r\nHost: %C3%B1\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/x");
@@ -2437,7 +2437,7 @@ req! {
 
 req! {
     urltest_174,
-    b"GET \\.\\./ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET \\.\\./ RTSP/1.0\r\nHost: \r\n\r\n",
     Err(Error::Token),
     |_r| {}
 }
@@ -2445,7 +2445,7 @@ req! {
 
 req! {
     urltest_175,
-    b"GET :a@example.net HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET :a@example.net RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), ":a@example.net");
@@ -2459,7 +2459,7 @@ req! {
 
 req! {
     urltest_176,
-    b"GET %NBD HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET %NBD RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "%NBD");
@@ -2473,7 +2473,7 @@ req! {
 
 req! {
     urltest_177,
-    b"GET %1G HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET %1G RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "%1G");
@@ -2487,7 +2487,7 @@ req! {
 
 req! {
     urltest_178,
-    b"GET /relative_import.html HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n",
+    b"GET /relative_import.html RTSP/1.0\r\nHost: 127.0.0.1\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/relative_import.html");
@@ -2501,7 +2501,7 @@ req! {
 
 req! {
     urltest_179,
-    b"GET /?foo=%7B%22abc%22 HTTP/1.1\r\nHost: facebook.com\r\n\r\n",
+    b"GET /?foo=%7B%22abc%22 RTSP/1.0\r\nHost: facebook.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?foo=%7B%22abc%22");
@@ -2515,7 +2515,7 @@ req! {
 
 req! {
     urltest_180,
-    b"GET /jqueryui@1.2.3 HTTP/1.1\r\nHost: localhost\r\n\r\n",
+    b"GET /jqueryui@1.2.3 RTSP/1.0\r\nHost: localhost\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/jqueryui@1.2.3");
@@ -2529,7 +2529,7 @@ req! {
 
 req! {
     urltest_181,
-    b"GET /path?query HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /path?query RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path?query");
@@ -2543,7 +2543,7 @@ req! {
 
 req! {
     urltest_182,
-    b"GET /foo/bar?a=b&c=d HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar?a=b&c=d RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar?a=b&c=d");
@@ -2557,7 +2557,7 @@ req! {
 
 req! {
     urltest_183,
-    b"GET /foo/bar??a=b&c=d HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar??a=b&c=d RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar??a=b&c=d");
@@ -2571,7 +2571,7 @@ req! {
 
 req! {
     urltest_184,
-    b"GET /foo/bar HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -2585,7 +2585,7 @@ req! {
 
 req! {
     urltest_185,
-    b"GET /baz?qux HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+    b"GET /baz?qux RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
@@ -2599,7 +2599,7 @@ req! {
 
 req! {
     urltest_186,
-    b"GET /baz?qux HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+    b"GET /baz?qux RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
@@ -2613,7 +2613,7 @@ req! {
 
 req! {
     urltest_187,
-    b"GET /baz?qux HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+    b"GET /baz?qux RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
@@ -2627,7 +2627,7 @@ req! {
 
 req! {
     urltest_188,
-    b"GET /baz?qux HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+    b"GET /baz?qux RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
@@ -2641,7 +2641,7 @@ req! {
 
 req! {
     urltest_189,
-    b"GET /baz?qux HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+    b"GET /baz?qux RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/baz?qux");
@@ -2655,7 +2655,7 @@ req! {
 
 req! {
     urltest_190,
-    b"GET /C%3A/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C%3A/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C%3A/");
@@ -2669,7 +2669,7 @@ req! {
 
 req! {
     urltest_191,
-    b"GET /C%7C/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C%7C/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C%7C/");
@@ -2683,7 +2683,7 @@ req! {
 
 req! {
     urltest_192,
-    b"GET /C:/Users/Domenic/Dropbox/GitHub/tmpvar/jsdom/test/level2/html/files/pix/submit.gif HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/Users/Domenic/Dropbox/GitHub/tmpvar/jsdom/test/level2/html/files/pix/submit.gif RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/Users/Domenic/Dropbox/GitHub/tmpvar/jsdom/test/level2/html/files/pix/submit.gif");
@@ -2697,7 +2697,7 @@ req! {
 
 req! {
     urltest_193,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -2711,7 +2711,7 @@ req! {
 
 req! {
     urltest_194,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -2725,7 +2725,7 @@ req! {
 
 req! {
     urltest_195,
-    b"GET /d: HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /d: RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d:");
@@ -2739,7 +2739,7 @@ req! {
 
 req! {
     urltest_196,
-    b"GET /d:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /d:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/d:/");
@@ -2753,7 +2753,7 @@ req! {
 
 req! {
     urltest_197,
-    b"GET /test?test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
@@ -2767,7 +2767,7 @@ req! {
 
 req! {
     urltest_198,
-    b"GET /test?test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
@@ -2781,7 +2781,7 @@ req! {
 
 req! {
     urltest_199,
-    b"GET /test?x HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?x RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?x");
@@ -2795,7 +2795,7 @@ req! {
 
 req! {
     urltest_200,
-    b"GET /test?x HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?x RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?x");
@@ -2809,7 +2809,7 @@ req! {
 
 req! {
     urltest_201,
-    b"GET /test?test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
@@ -2823,7 +2823,7 @@ req! {
 
 req! {
     urltest_202,
-    b"GET /test?test HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test?test RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?test");
@@ -2837,7 +2837,7 @@ req! {
 
 req! {
     urltest_203,
-    b"GET /?fox HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /?fox RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?fox");
@@ -2851,7 +2851,7 @@ req! {
 
 req! {
     urltest_204,
-    b"GET /localhost//cat HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /localhost//cat RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//cat");
@@ -2865,7 +2865,7 @@ req! {
 
 req! {
     urltest_205,
-    b"GET /localhost//cat HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /localhost//cat RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//cat");
@@ -2879,7 +2879,7 @@ req! {
 
 req! {
     urltest_206,
-    b"GET /mouse HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /mouse RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/mouse");
@@ -2893,7 +2893,7 @@ req! {
 
 req! {
     urltest_207,
-    b"GET /pig HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pig RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
@@ -2907,7 +2907,7 @@ req! {
 
 req! {
     urltest_208,
-    b"GET /pig HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pig RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
@@ -2921,7 +2921,7 @@ req! {
 
 req! {
     urltest_209,
-    b"GET /pig HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /pig RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/pig");
@@ -2935,7 +2935,7 @@ req! {
 
 req! {
     urltest_210,
-    b"GET /localhost//pig HTTP/1.1\r\nHost: lion\r\n\r\n",
+    b"GET /localhost//pig RTSP/1.0\r\nHost: lion\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/localhost//pig");
@@ -2949,7 +2949,7 @@ req! {
 
 req! {
     urltest_211,
-    b"GET /rooibos HTTP/1.1\r\nHost: tea\r\n\r\n",
+    b"GET /rooibos RTSP/1.0\r\nHost: tea\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/rooibos");
@@ -2963,7 +2963,7 @@ req! {
 
 req! {
     urltest_212,
-    b"GET /?chai HTTP/1.1\r\nHost: tea\r\n\r\n",
+    b"GET /?chai RTSP/1.0\r\nHost: tea\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?chai");
@@ -2977,7 +2977,7 @@ req! {
 
 req! {
     urltest_213,
-    b"GET /C: HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C: RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
@@ -2991,7 +2991,7 @@ req! {
 
 req! {
     urltest_214,
-    b"GET /C: HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C: RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
@@ -3005,7 +3005,7 @@ req! {
 
 req! {
     urltest_215,
-    b"GET /C: HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C: RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:");
@@ -3019,7 +3019,7 @@ req! {
 
 req! {
     urltest_216,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3033,7 +3033,7 @@ req! {
 
 req! {
     urltest_217,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3047,7 +3047,7 @@ req! {
 
 req! {
     urltest_218,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3061,7 +3061,7 @@ req! {
 
 req! {
     urltest_219,
-    b"GET /dir/C HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /dir/C RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/dir/C");
@@ -3075,7 +3075,7 @@ req! {
 
 req! {
     urltest_220,
-    b"GET /dir/C|a HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /dir/C|a RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/dir/C|a");
@@ -3089,7 +3089,7 @@ req! {
 
 req! {
     urltest_221,
-    b"GET /c:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
@@ -3103,7 +3103,7 @@ req! {
 
 req! {
     urltest_222,
-    b"GET /c:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
@@ -3117,7 +3117,7 @@ req! {
 
 req! {
     urltest_223,
-    b"GET /c:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
@@ -3131,7 +3131,7 @@ req! {
 
 req! {
     urltest_224,
-    b"GET /c:/foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /c:/foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/c:/foo/bar");
@@ -3145,7 +3145,7 @@ req! {
 
 req! {
     urltest_225,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3159,7 +3159,7 @@ req! {
 
 req! {
     urltest_226,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3173,7 +3173,7 @@ req! {
 
 req! {
     urltest_227,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3187,7 +3187,7 @@ req! {
 
 req! {
     urltest_228,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3201,7 +3201,7 @@ req! {
 
 req! {
     urltest_229,
-    b"GET /C:/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /C:/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/C:/");
@@ -3215,7 +3215,7 @@ req! {
 
 req! {
     urltest_230,
-    b"GET /?q=v HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /?q=v RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/?q=v");
@@ -3229,7 +3229,7 @@ req! {
 
 req! {
     urltest_231,
-    b"GET ?x HTTP/1.1\r\nHost: %C3%B1\r\n\r\n",
+    b"GET ?x RTSP/1.0\r\nHost: %C3%B1\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "?x");
@@ -3243,7 +3243,7 @@ req! {
 
 req! {
     urltest_232,
-    b"GET ?x HTTP/1.1\r\nHost: %C3%B1\r\n\r\n",
+    b"GET ?x RTSP/1.0\r\nHost: %C3%B1\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "?x");
@@ -3257,7 +3257,7 @@ req! {
 
 req! {
     urltest_233,
-    b"GET // HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET // RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//");
@@ -3271,7 +3271,7 @@ req! {
 
 req! {
     urltest_234,
-    b"GET //x/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET //x/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "//x/");
@@ -3285,7 +3285,7 @@ req! {
 
 req! {
     urltest_235,
-    b"GET /someconfig;mode=netascii HTTP/1.1\r\nHost: foobar.com\r\n\r\n",
+    b"GET /someconfig;mode=netascii RTSP/1.0\r\nHost: foobar.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/someconfig;mode=netascii");
@@ -3299,7 +3299,7 @@ req! {
 
 req! {
     urltest_236,
-    b"GET /Index.ut2 HTTP/1.1\r\nHost: 10.10.10.10\r\n\r\n",
+    b"GET /Index.ut2 RTSP/1.0\r\nHost: 10.10.10.10\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/Index.ut2");
@@ -3313,7 +3313,7 @@ req! {
 
 req! {
     urltest_237,
-    b"GET /0?baz=bam&qux=baz HTTP/1.1\r\nHost: somehost\r\n\r\n",
+    b"GET /0?baz=bam&qux=baz RTSP/1.0\r\nHost: somehost\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/0?baz=bam&qux=baz");
@@ -3327,7 +3327,7 @@ req! {
 
 req! {
     urltest_238,
-    b"GET /sup HTTP/1.1\r\nHost: host\r\n\r\n",
+    b"GET /sup RTSP/1.0\r\nHost: host\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/sup");
@@ -3341,7 +3341,7 @@ req! {
 
 req! {
     urltest_239,
-    b"GET /foo/bar.git HTTP/1.1\r\nHost: github.com\r\n\r\n",
+    b"GET /foo/bar.git RTSP/1.0\r\nHost: github.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar.git");
@@ -3355,7 +3355,7 @@ req! {
 
 req! {
     urltest_240,
-    b"GET /channel?passwd HTTP/1.1\r\nHost: myserver.com\r\n\r\n",
+    b"GET /channel?passwd RTSP/1.0\r\nHost: myserver.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/channel?passwd");
@@ -3369,7 +3369,7 @@ req! {
 
 req! {
     urltest_241,
-    b"GET /foo.bar.org?type=TXT HTTP/1.1\r\nHost: fw.example.org\r\n\r\n",
+    b"GET /foo.bar.org?type=TXT RTSP/1.0\r\nHost: fw.example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo.bar.org?type=TXT");
@@ -3383,7 +3383,7 @@ req! {
 
 req! {
     urltest_242,
-    b"GET /ou=People,o=JNDITutorial HTTP/1.1\r\nHost: localhost\r\n\r\n",
+    b"GET /ou=People,o=JNDITutorial RTSP/1.0\r\nHost: localhost\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/ou=People,o=JNDITutorial");
@@ -3397,7 +3397,7 @@ req! {
 
 req! {
     urltest_243,
-    b"GET /foo/bar HTTP/1.1\r\nHost: github.com\r\n\r\n",
+    b"GET /foo/bar RTSP/1.0\r\nHost: github.com\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/foo/bar");
@@ -3411,7 +3411,7 @@ req! {
 
 req! {
     urltest_244,
-    b"GET ietf:rfc:2648 HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET ietf:rfc:2648 RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "ietf:rfc:2648");
@@ -3425,7 +3425,7 @@ req! {
 
 req! {
     urltest_245,
-    b"GET joe@example.org,2001:foo/bar HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET joe@example.org,2001:foo/bar RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "joe@example.org,2001:foo/bar");
@@ -3439,7 +3439,7 @@ req! {
 
 req! {
     urltest_246,
-    b"GET /path HTTP/1.1\r\nHost: H%4fSt\r\n\r\n",
+    b"GET /path RTSP/1.0\r\nHost: H%4fSt\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/path");
@@ -3453,7 +3453,7 @@ req! {
 
 req! {
     urltest_247,
-    b"GET https://example.com:443/ HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET https://example.com:443/ RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "https://example.com:443/");
@@ -3467,7 +3467,7 @@ req! {
 
 req! {
     urltest_248,
-    b"GET d3958f5c-0777-0845-9dcf-2cb28783acaf HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET d3958f5c-0777-0845-9dcf-2cb28783acaf RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "d3958f5c-0777-0845-9dcf-2cb28783acaf");
@@ -3481,7 +3481,7 @@ req! {
 
 req! {
     urltest_249,
-    b"GET /test?%22 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%22 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%22");
@@ -3495,7 +3495,7 @@ req! {
 
 req! {
     urltest_250,
-    b"GET /test HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test");
@@ -3509,7 +3509,7 @@ req! {
 
 req! {
     urltest_251,
-    b"GET /test?%3C HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%3C RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%3C");
@@ -3523,7 +3523,7 @@ req! {
 
 req! {
     urltest_252,
-    b"GET /test?%3E HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%3E RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%3E");
@@ -3537,7 +3537,7 @@ req! {
 
 req! {
     urltest_253,
-    b"GET /test?%E2%8C%A3 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%E2%8C%A3 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%E2%8C%A3");
@@ -3551,7 +3551,7 @@ req! {
 
 req! {
     urltest_254,
-    b"GET /test?%23%23 HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%23%23 RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%23%23");
@@ -3565,7 +3565,7 @@ req! {
 
 req! {
     urltest_255,
-    b"GET /test?%GH HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?%GH RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?%GH");
@@ -3579,7 +3579,7 @@ req! {
 
 req! {
     urltest_256,
-    b"GET /test?a HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?a RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");
@@ -3593,7 +3593,7 @@ req! {
 
 req! {
     urltest_257,
-    b"GET /test?a HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?a RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");
@@ -3607,7 +3607,7 @@ req! {
 
 req! {
     urltest_258,
-    b"GET /test-a-colon-slash.html HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test-a-colon-slash.html RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash.html");
@@ -3621,7 +3621,7 @@ req! {
 
 req! {
     urltest_259,
-    b"GET /test-a-colon-slash-slash.html HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test-a-colon-slash-slash.html RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-slash.html");
@@ -3635,7 +3635,7 @@ req! {
 
 req! {
     urltest_260,
-    b"GET /test-a-colon-slash-b.html HTTP/1.1\r\nHost: \r\n\r\n",
+    b"GET /test-a-colon-slash-b.html RTSP/1.0\r\nHost: \r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-b.html");
@@ -3649,7 +3649,7 @@ req! {
 
 req! {
     urltest_261,
-    b"GET /test-a-colon-slash-slash-b.html HTTP/1.1\r\nHost: b\r\n\r\n",
+    b"GET /test-a-colon-slash-slash-b.html RTSP/1.0\r\nHost: b\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test-a-colon-slash-slash-b.html");
@@ -3663,7 +3663,7 @@ req! {
 
 req! {
     urltest_262,
-    b"GET /test?a HTTP/1.1\r\nHost: example.org\r\n\r\n",
+    b"GET /test?a RTSP/1.0\r\nHost: example.org\r\n\r\n",
     |req| {
         assert_eq!(req.method.unwrap(), "GET");
         assert_eq!(req.path.unwrap(), "/test?a");

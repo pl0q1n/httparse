@@ -3,9 +3,9 @@
 #![cfg_attr(test, deny(warnings))]
 #![deny(missing_docs)]
 
-//! # httparse
+//! # httparse's fork for RTSP 
 //!
-//! A push library for parsing HTTP/1.x requests and responses.
+//! A push library for parsing RTSP/1.0 requests and responses.
 //!
 //! The focus is on speed and safety. Unsafe code is used to keep parsing fast,
 //! but unsafety is contained in a submodule, with invariants enforced. The
@@ -154,7 +154,7 @@ pub enum Error {
     Token,
     /// Parsed more headers than provided buffer can contain.
     TooManyHeaders,
-    /// Invalid byte in HTTP version.
+    /// Invalid byte in RTSP version.
     Version,
 }
 
@@ -168,7 +168,7 @@ impl Error {
             Error::Status => "invalid response status",
             Error::Token => "invalid token",
             Error::TooManyHeaders => "too many headers",
-            Error::Version => "invalid HTTP version",
+            Error::Version => "invalid RTSP version",
         }
     }
 }
@@ -256,7 +256,7 @@ impl<T> Status<T> {
 /// # Example
 ///
 /// ```no_run
-/// let buf = b"GET /404 HTTP/1.1\r\nHost:";
+/// let buf = b"GET /404 RTSP/1.0\r\nHost:";
 /// let mut headers = [httparse::EMPTY_HEADER; 16];
 /// let mut req = httparse::Request::new(&mut headers);
 /// let res = req.parse(buf).unwrap();
@@ -278,7 +278,7 @@ pub struct Request<'headers, 'buf: 'headers> {
     pub method: Option<&'buf str>,
     /// The request path, such as `/about-us`.
     pub path: Option<&'buf str>,
-    /// The request version, such as `HTTP/1.1`.
+    /// The request version, such as `RTSP/1.0`.
     pub version: Option<u8>,
     /// The request headers.
     pub headers: &'headers mut [Header<'buf>]
@@ -341,7 +341,7 @@ fn skip_empty_lines(bytes: &mut Bytes) -> Result<()> {
 /// See `Request` docs for explanation of optional values.
 #[derive(Debug, PartialEq)]
 pub struct Response<'headers, 'buf: 'headers> {
-    /// The response version, such as `HTTP/1.1`.
+    /// The response version, such as `RTSP/1.0`.
     pub version: Option<u8>,
     /// The response code, such as `200`.
     pub code: Option<u16>,
@@ -430,16 +430,15 @@ pub const EMPTY_HEADER: Header<'static> = Header { name: "", value: b"" };
 #[inline]
 fn parse_version(bytes: &mut Bytes) -> Result<u8> {
     if let Some(mut eight) = bytes.next_8() {
-        expect!(eight._0() => b'H' |? Err(Error::Version));
+        expect!(eight._0() => b'R' |? Err(Error::Version));
         expect!(eight._1() => b'T' |? Err(Error::Version));
-        expect!(eight._2() => b'T' |? Err(Error::Version));
+        expect!(eight._2() => b'S' |? Err(Error::Version));
         expect!(eight._3() => b'P' |? Err(Error::Version));
         expect!(eight._4() => b'/' |? Err(Error::Version));
         expect!(eight._5() => b'1' |? Err(Error::Version));
         expect!(eight._6() => b'.' |? Err(Error::Version));
         let v = match eight._7() {
             b'0' => 0,
-            b'1' => 1,
             _ => return Err(Error::Version)
         };
         return Ok(Status::Complete(v))
@@ -449,9 +448,9 @@ fn parse_version(bytes: &mut Bytes) -> Result<u8> {
 
     // If there aren't at least 8 bytes, we still want to detect early
     // if this is a valid version or not. If it is, we'll return Partial.
-    expect!(bytes.next() == b'H' => Err(Error::Version));
+    expect!(bytes.next() == b'R' => Err(Error::Version));
     expect!(bytes.next() == b'T' => Err(Error::Version));
-    expect!(bytes.next() == b'T' => Err(Error::Version));
+    expect!(bytes.next() == b'S' => Err(Error::Version));
     expect!(bytes.next() == b'P' => Err(Error::Version));
     expect!(bytes.next() == b'/' => Err(Error::Version));
     expect!(bytes.next() == b'1' => Err(Error::Version));
@@ -459,7 +458,7 @@ fn parse_version(bytes: &mut Bytes) -> Result<u8> {
     Ok(Status::Partial)
 }
 
-/// From [RFC 7230](https://tools.ietf.org/html/rfc7230):
+/// From [RFC2326](https://www.ietf.org/rfc/rfc2326.txt):
 ///
 /// > ```notrust
 /// > reason-phrase  = *( HTAB / SP / VCHAR / obs-text )
@@ -467,16 +466,6 @@ fn parse_version(bytes: &mut Bytes) -> Result<u8> {
 /// > VCHAR          = %x21-7E     ; visible (printing) characters
 /// > obs-text       = %x80-FF
 /// > ```
-///
-/// > A.2.  Changes from RFC 2616
-/// >
-/// > Non-US-ASCII content in header fields and the reason phrase
-/// > has been obsoleted and made opaque (the TEXT rule was removed).
-///
-/// Note that the following implementation deliberately rejects the obsoleted (non-US-ASCII) text range.
-///
-/// The fully compliant parser should probably just return the reason-phrase as an opaque &[u8] data
-/// and leave interpretation to user or specialized helpers (akin to .display() in std::path::Path)
 #[inline]
 fn parse_reason<'a>(bytes: &mut Bytes<'a>) -> Result<&'a str> {
     loop {
@@ -814,7 +803,7 @@ mod tests {
 
     req! {
         test_request_simple,
-        b"GET / HTTP/1.1\r\n\r\n",
+        b"GET / RTSP/1.0\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -825,7 +814,7 @@ mod tests {
 
     req! {
         test_request_simple_with_query_params,
-        b"GET /thing?data=a HTTP/1.1\r\n\r\n",
+        b"GET /thing?data=a RTSP/1.0\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/thing?data=a");
@@ -836,7 +825,7 @@ mod tests {
 
     req! {
         test_request_simple_with_whatwg_query_params,
-        b"GET /thing?data=a^ HTTP/1.1\r\n\r\n",
+        b"GET /thing?data=a^ RTSP/1.0\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/thing?data=a^");
@@ -847,7 +836,7 @@ mod tests {
 
     req! {
         test_request_headers,
-        b"GET / HTTP/1.1\r\nHost: foo.com\r\nCookie: \r\n\r\n",
+        b"GET / RTSP/1.0\r\nHost: foo.com\r\nCookie: \r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -862,7 +851,7 @@ mod tests {
 
     req! {
         test_request_headers_optional_whitespace,
-        b"GET / HTTP/1.1\r\nHost: \tfoo.com\t \r\nCookie: \t \r\n\r\n",
+        b"GET / RTSP/1.0\r\nHost: \tfoo.com\t \r\nCookie: \t \r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -878,7 +867,7 @@ mod tests {
     req! {
         // test the scalar parsing
         test_request_header_value_htab_short,
-        b"GET / HTTP/1.1\r\nUser-Agent: some\tagent\r\n\r\n",
+        b"GET / RTSP/1.0\r\nUser-Agent: some\tagent\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -892,7 +881,7 @@ mod tests {
     req! {
         // test the sse42 parsing
         test_request_header_value_htab_med,
-        b"GET / HTTP/1.1\r\nUser-Agent: 1234567890some\tagent\r\n\r\n",
+        b"GET / RTSP/1.0\r\nUser-Agent: 1234567890some\tagent\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -906,7 +895,7 @@ mod tests {
     req! {
         // test the avx2 parsing
         test_request_header_value_htab_long,
-        b"GET / HTTP/1.1\r\nUser-Agent: 1234567890some\t1234567890agent1234567890\r\n\r\n",
+        b"GET / RTSP/1.0\r\nUser-Agent: 1234567890some\t1234567890agent1234567890\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -919,7 +908,7 @@ mod tests {
 
     req! {
         test_request_headers_max,
-        b"GET / HTTP/1.1\r\nA: A\r\nB: B\r\nC: C\r\nD: D\r\n\r\n",
+        b"GET / RTSP/1.0\r\nA: A\r\nB: B\r\nC: C\r\nD: D\r\n\r\n",
         |req| {
             assert_eq!(req.headers.len(), NUM_OF_HEADERS);
         }
@@ -927,7 +916,7 @@ mod tests {
 
     req! {
         test_request_multibyte,
-        b"GET / HTTP/1.1\r\nHost: foo.com\r\nUser-Agent: \xe3\x81\xb2\xe3/1.0\r\n\r\n",
+        b"GET / RTSP/1.0\r\nHost: foo.com\r\nUser-Agent: \xe3\x81\xb2\xe3/1.0\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -942,7 +931,7 @@ mod tests {
 
     req! {
         test_request_partial,
-        b"GET / HTTP/1.1\r\n\r", Ok(Status::Partial),
+        b"GET / RTSP/1.0\r\n\r", Ok(Status::Partial),
         |_req| {}
     }
 
@@ -954,13 +943,13 @@ mod tests {
 
     req! {
         test_request_newlines,
-        b"GET / HTTP/1.1\nHost: foo.bar\n\n",
+        b"GET / RTSP/1.0\nHost: foo.bar\n\n",
         |_r| {}
     }
 
     req! {
         test_request_empty_lines_prefix,
-        b"\r\n\r\nGET / HTTP/1.1\r\n\r\n",
+        b"\r\n\r\nGET / RTSP/1.0\r\n\r\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -971,7 +960,7 @@ mod tests {
 
     req! {
         test_request_empty_lines_prefix_lf_only,
-        b"\n\nGET / HTTP/1.1\n\n",
+        b"\n\nGET / RTSP/1.0\n\n",
         |req| {
             assert_eq!(req.method.unwrap(), "GET");
             assert_eq!(req.path.unwrap(), "/");
@@ -982,7 +971,7 @@ mod tests {
 
     req! {
         test_request_with_invalid_token_delimiter,
-        b"GET\n/ HTTP/1.1\r\nHost: foo.bar\r\n\r\n",
+        b"GET\n/ RTSP/1.0\r\nHost: foo.bar\r\n\r\n",
         Err(::Error::Token),
         |_r| {}
     }
@@ -990,7 +979,7 @@ mod tests {
 
     req! {
         test_request_with_invalid_but_short_version,
-        b"GET / HTTP/1!",
+        b"GET / RTSP/1!",
         Err(::Error::Version),
         |_r| {}
     }
@@ -1017,7 +1006,7 @@ mod tests {
 
     res! {
         test_response_simple,
-        b"HTTP/1.1 200 OK\r\n\r\n",
+        b"RTSP/1.0 200 OK\r\n\r\n",
         |res| {
             assert_eq!(res.version.unwrap(), 1);
             assert_eq!(res.code.unwrap(), 200);
@@ -1027,13 +1016,13 @@ mod tests {
 
     res! {
         test_response_newlines,
-        b"HTTP/1.0 403 Forbidden\nServer: foo.bar\n\n",
+        b"RTSP/1.0 403 Forbidden\nServer: foo.bar\n\n",
         |_r| {}
     }
 
     res! {
         test_response_reason_missing,
-        b"HTTP/1.1 200 \r\n\r\n",
+        b"RTSP/1.0 200 \r\n\r\n",
         |res| {
             assert_eq!(res.version.unwrap(), 1);
             assert_eq!(res.code.unwrap(), 200);
@@ -1043,7 +1032,7 @@ mod tests {
 
     res! {
         test_response_reason_missing_no_space,
-        b"HTTP/1.1 200\r\n\r\n",
+        b"RTSP/1.0 200\r\n\r\n",
         |res| {
             assert_eq!(res.version.unwrap(), 1);
             assert_eq!(res.code.unwrap(), 200);
@@ -1053,7 +1042,7 @@ mod tests {
 
     res! {
         test_response_reason_missing_no_space_with_headers,
-        b"HTTP/1.1 200\r\nFoo: bar\r\n\r\n",
+        b"RTSP/1.0 200\r\nFoo: bar\r\n\r\n",
         |res| {
             assert_eq!(res.version.unwrap(), 1);
             assert_eq!(res.code.unwrap(), 200);
@@ -1066,7 +1055,7 @@ mod tests {
 
     res! {
         test_response_reason_with_space_and_tab,
-        b"HTTP/1.1 101 Switching Protocols\t\r\n\r\n",
+        b"RTSP/1.0 101 Switching Protocols\t\r\n\r\n",
         |res| {
             assert_eq!(res.version.unwrap(), 1);
             assert_eq!(res.code.unwrap(), 101);
@@ -1074,7 +1063,7 @@ mod tests {
         }
     }
 
-    static RESPONSE_REASON_WITH_OBS_TEXT_BYTE: &'static [u8] = b"HTTP/1.1 200 X\xFFZ\r\n\r\n";
+    static RESPONSE_REASON_WITH_OBS_TEXT_BYTE: &'static [u8] = b"RTSP/1.0 200 X\xFFZ\r\n\r\n";
     res! {
         test_response_reason_with_obsolete_text_byte,
         RESPONSE_REASON_WITH_OBS_TEXT_BYTE,
@@ -1084,28 +1073,28 @@ mod tests {
 
     res! {
         test_response_reason_with_nul_byte,
-        b"HTTP/1.1 200 \x00\r\n\r\n",
+        b"RTSP/1.0 200 \x00\r\n\r\n",
         Err(::Error::Status),
         |_res| {}
     }
 
     res! {
         test_response_version_missing_space,
-        b"HTTP/1.1",
+        b"RTSP/1.0",
         Ok(Status::Partial),
         |_res| {}
     }
 
     res! {
         test_response_code_missing_space,
-        b"HTTP/1.1 200",
+        b"RTSP/1.0 200",
         Ok(Status::Partial),
         |_res| {}
     }
 
     res! {
         test_response_empty_lines_prefix_lf_only,
-        b"\n\nHTTP/1.1 200 OK\n\n",
+        b"\n\nRTSP/1.0 200 OK\n\n",
         |_res| {}
     }
 
